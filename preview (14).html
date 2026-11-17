@@ -1,0 +1,1168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="ATIVARTIN — Surpass Beyond.">
+<title>ATIVARTIN — Surpass Beyond.</title>
+
+<style>
+:root {
+  --bg: #090909;
+  --fg: #f5f5f2;
+  --muted: #929292;
+  --line: #292929;
+  --pad: clamp(22px, 6vw, 85px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+/* HEADER */
+
+.header {
+  height: 68px;
+  padding: 0 var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #090909;
+}
+
+.logo {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: .22em;
+}
+
+.logo span {
+  color: #777;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.desktop-nav a {
+  font-size: 10px;
+  letter-spacing: .13em;
+  color: #aaa;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  color: white;
+}
+
+.desktop-nav .contact-link {
+  border: 1px solid #555;
+  padding: 12px 15px;
+  color: white;
+}
+
+.menu-button {
+  display: none;
+  color: white;
+  background: transparent;
+  border: 1px solid #555;
+  padding: 10px 13px;
+  font-size: 10px;
+  letter-spacing: .13em;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 19;
+  background: #090909;
+  padding: 35px var(--pad);
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav a {
+  font-size: clamp(30px, 9vw, 45px);
+  letter-spacing: -.06em;
+  color: #aaa;
+}
+
+/* GENERAL */
+
+main {
+  min-height: 65vh;
+}
+
+.page {
+  animation: fadeIn .35s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .19em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.section {
+  padding: 100px var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-title {
+  font-size: clamp(38px, 7vw, 85px);
+  line-height: .98;
+  letter-spacing: -.075em;
+  font-weight: 400;
+  margin: 40px 0;
+}
+
+.section-title em {
+  color: #888;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.body-copy {
+  max-width: 520px;
+  margin-left: auto;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* HOME HERO */
+
+.hero {
+  min-height: 84vh;
+  min-height: 84svh;
+  padding: 90px var(--pad) 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 60vw;
+  aspect-ratio: 1;
+  border: 1px solid #222;
+  border-radius: 50%;
+  right: -30vw;
+  top: 12%;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: clamp(65px, 15vw, 185px);
+  line-height: .78;
+  letter-spacing: -.105em;
+  font-weight: 400;
+  margin: 75px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title span {
+  display: block;
+  color: #777;
+  margin-left: clamp(0px, 10vw, 130px);
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-description {
+  max-width: 390px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #aaa;
+}
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #777;
+  padding-bottom: 11px;
+  font-size: 9px;
+  letter-spacing: .15em;
+  white-space: nowrap;
+}
+
+.arrow-link b {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+/* CARDS */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin-top: 45px;
+}
+
+.grid-card {
+  min-height: 205px;
+  padding: 30px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background .2s;
+}
+
+.grid-card:hover {
+  background: #151515;
+}
+
+.grid-card small {
+  font-size: 9px;
+  color: #888;
+  letter-spacing: .15em;
+}
+
+.grid-card h3 {
+  font-size: clamp(25px, 3.5vw, 40px);
+  font-weight: 400;
+  letter-spacing: -.05em;
+  margin: 30px 0 10px;
+}
+
+.grid-card p {
+  color: #999;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 9px;
+  color: #999;
+  letter-spacing: .13em;
+}
+
+/* STATEMENT */
+
+.statement {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: end;
+}
+
+.infinity {
+  font-size: clamp(120px, 22vw, 250px);
+  line-height: .7;
+  color: #292929;
+}
+
+.statement p {
+  max-width: 430px;
+  color: #aaa;
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.7;
+}
+
+/* FOUNDER */
+
+.founder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: end;
+}
+
+.founder-symbol {
+  font-size: clamp(120px, 20vw, 230px);
+  color: #292929;
+  letter-spacing: -.12em;
+}
+
+.founder h2 {
+  font-size: clamp(38px, 6vw, 70px);
+  font-weight: 400;
+  letter-spacing: -.07em;
+  line-height: 1;
+}
+
+/* PAGE HEADINGS */
+
+.page-heading {
+  padding: 140px var(--pad) 65px;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-heading h1 {
+  font-size: clamp(55px, 11vw, 140px);
+  line-height: .9;
+  letter-spacing: -.09em;
+  font-weight: 400;
+  margin: 45px 0 0;
+}
+
+.page-heading h1 em {
+  color: #888;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.page-content {
+  padding: 75px var(--pad) 120px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8%;
+}
+
+.page-content h2 {
+  font-size: clamp(28px, 4.5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -.06em;
+  font-weight: 400;
+  margin: 0 0 30px;
+}
+
+.page-content p {
+  max-width: 680px;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+/* PRINCIPLES */
+
+.principles {
+  border-top: 1px solid var(--line);
+  margin-top: 45px;
+}
+
+.principle {
+  border-bottom: 1px solid var(--line);
+}
+
+.principle button {
+  background: transparent;
+  border: 0;
+  color: white;
+  width: 100%;
+  padding: 23px 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 20px;
+}
+
+.principle p {
+  display: none;
+  padding-right: 25px;
+}
+
+.principle.open p {
+  display: block;
+}
+
+/* CONTACT */
+
+.contact-row {
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: #999;
+}
+
+/* CLOSING */
+
+.closing {
+  padding: 130px var(--pad);
+  text-align: center;
+}
+
+.closing h2 {
+  font-size: clamp(60px, 12vw, 145px);
+  line-height: .82;
+  letter-spacing: -.09em;
+  font-weight: 400;
+  margin: 40px 0;
+}
+
+.closing h2 span {
+  color: #777;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 48px var(--pad) 22px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-top,
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.footer-top {
+  padding-bottom: 45px;
+}
+
+.footer-brand {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+
+.footer-tag {
+  font-size: 9px;
+  color: #888;
+  letter-spacing: .2em;
+  margin-top: 12px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a,
+.footer-bottom {
+  font-size: 9px;
+  letter-spacing: .13em;
+  color: #888;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+/* 404 */
+
+.not-found {
+  padding: 100px var(--pad);
+  min-height: 55vh;
+}
+
+.not-found h1 {
+  font-size: clamp(55px, 11vw, 120px);
+  font-weight: 400;
+  letter-spacing: -.09em;
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .header {
+    height: 64px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-nav {
+    top: 64px;
+  }
+
+  .hero {
+    min-height: 84svh;
+    padding-top: 65px;
+  }
+
+  .hero-title {
+    font-size: clamp(60px, 16vw, 115px);
+    margin: 65px 0;
+  }
+
+  .hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-card {
+    min-height: 175px;
+  }
+
+  .statement,
+  .founder {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .page-heading {
+    padding-top: 100px;
+  }
+
+  .page-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="#/">ATIVARTIN<span>.</span></a>
+
+  <nav class="desktop-nav">
+    <a href="#/about">ABOUT</a>
+    <a href="#/vision">VISION</a>
+    <a href="#/philosophy">PHILOSOPHY</a>
+    <a href="#/leadership">LEADERSHIP</a>
+    <a href="#/contact" class="contact-link">CONTACT ↗</a>
+  </nav>
+
+  <button class="menu-button" id="menuButton">
+    MENU
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#/">Home</a>
+  <a href="#/about">About</a>
+  <a href="#/vision">Vision</a>
+  <a href="#/philosophy">Philosophy</a>
+  <a href="#/principles">Principles</a>
+  <a href="#/leadership">Leadership</a>
+  <a href="#/rakeshd">Founder</a>
+  <a href="#/contact">Contact ↗</a>
+</nav>
+
+<main id="app"></main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">ATIVARTIN.</div>
+      <div class="footer-tag">SURPASS BEYOND.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="#/about">ABOUT</a>
+      <a href="#/vision">VISION</a>
+      <a href="#/rakeshd">FOUNDER</a>
+      <a href="#/contact">CONTACT</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> ATIVARTIN</span>
+    <span>SURPASS BEYOND.</span>
+    <span>ALL RIGHTS RESERVED.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+"use strict";
+
+const app = document.getElementById("app");
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+const pages = {
+
+  "/": {
+    title: "ATIVARTIN — Surpass Beyond.",
+    home: true
+  },
+
+  "/about": {
+    title: "About — ATIVARTIN",
+    label: "THE COMPANY / 01",
+    headline: "Beyond the <em>ordinary.</em>",
+    heading: "An outlook shaped by possibility.",
+    body: [
+      "Ativartin represents a forward-looking approach to ideas, progress and meaningful change.",
+      "We believe the future is not simply something to anticipate. It is something to question, imagine and shape.",
+      "Our identity is rooted in ambition, original thinking and the pursuit of possibilities beyond established boundaries."
+    ]
+  },
+
+  "/vision": {
+    title: "Vision — ATIVARTIN",
+    label: "OUR VISION / 02",
+    headline: "The future is <em>open.</em>",
+    heading: "A broader perspective on what is possible.",
+    body: [
+      "Our vision is rooted in continuous advancement, independent thinking and the courage to explore new possibilities.",
+      "We look beyond existing limitations and conventional definitions of progress.",
+      "The future should not be restricted by the assumptions of the present."
+    ]
+  },
+
+  "/philosophy": {
+    title: "Philosophy — ATIVARTIN",
+    label: "OUR PHILOSOPHY / 03",
+    headline: "Think <em>otherwise.</em>",
+    heading: "Progress begins with perspective.",
+    body: [
+      "Meaningful progress begins by questioning assumptions and looking at familiar challenges from new perspectives.",
+      "Curiosity, clarity and a willingness to evolve shape our philosophy.",
+      "We value substance over appearance, thought over assumption and progress over complacency."
+    ]
+  },
+
+  "/principles": {
+    title: "Principles — ATIVARTIN",
+    label: "OUR PRINCIPLES / 04",
+    headline: "What <em>guides us.</em>",
+    heading: "A foundation for forward thinking.",
+    body: [
+      "Clarity over complexity. Substance over appearance. Progress over complacency.",
+      "We value thoughtful decisions, responsibility, originality and continuous improvement.",
+      "Our principles guide how we think, decide and move forward."
+    ],
+    principles: true
+  },
+
+  "/leadership": {
+    title: "Leadership — ATIVARTIN",
+    label: "LEADERSHIP / 05",
+    headline: "Direction with <em>purpose.</em>",
+    heading: "Leadership begins with responsibility.",
+    body: [
+      "Ativartin's direction is guided by its founding leadership and a commitment to its long-term vision.",
+      "Our leadership philosophy centres on clarity of purpose, thoughtful action and the willingness to look beyond convention."
+    ]
+  },
+
+  "/rakeshd": {
+    title: "Rakesh D. — ATIVARTIN",
+    label: "FOUNDER & CHIEF EXECUTIVE OFFICER",
+    headline: "Rakesh <em>D.</em>",
+    heading: "Building with a perspective beyond today.",
+    body: [
+      "Rakesh D. is the Founder and Chief Executive Officer of Ativartin.",
+      "His direction for Ativartin is shaped by ambition, original thinking and the belief that meaningful progress begins by looking beyond established boundaries."
+    ],
+    founder: true
+  },
+
+  "/contact": {
+    title: "Contact — ATIVARTIN",
+    label: "CORRESPONDENCE / 06",
+    headline: "Start a <em>conversation.</em>",
+    heading: "Connect with Ativartin.",
+    body: [
+      "For general enquiries, professional correspondence or communication with Ativartin, official contact information will be published here.",
+      "We look forward to opening the right conversations."
+    ],
+    contact: true
+  }
+
+};
+
+/* HOME PAGE */
+
+function homePage() {
+
+return `
+<div class="page">
+
+  <section class="hero">
+
+    <div>
+      <div class="eyebrow">
+        AN OUTLOOK BEYOND THE EXPECTED
+      </div>
+
+      <h1 class="hero-title">
+        SURPASS
+        <span>BEYOND.</span>
+      </h1>
+    </div>
+
+    <div class="hero-bottom">
+
+      <p class="hero-description">
+        A forward-looking company shaped by ambition,
+        original thinking and the pursuit of meaningful progress.
+      </p>
+
+      <a class="arrow-link" href="#/about">
+        DISCOVER ATIVARTIN <b>↗</b>
+      </a>
+
+      <div class="eyebrow">
+        INDEPENDENT IN THOUGHT<br>
+        FORWARD IN PERSPECTIVE
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="eyebrow">01 / A POINT OF VIEW</div>
+
+    <h2 class="section-title">
+      Looking beyond what exists.<br>
+      <em>Exploring what could be.</em>
+    </h2>
+
+    <p class="body-copy">
+      Ativartin represents a forward-looking approach
+      to ideas, progress and meaningful change.
+      We believe possibility begins where convention ends.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <div class="statement">
+
+      <div>
+        <div class="eyebrow">02 / THE PERSPECTIVE</div>
+        <div class="infinity">∞</div>
+      </div>
+
+      <p>
+        Progress is not a destination.
+        It is the discipline of questioning,
+        rethinking and moving beyond what is already known.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="eyebrow">03 / EXPLORE ATIVARTIN</div>
+
+    <div class="grid">
+
+      <a class="grid-card" href="#/about">
+        <small>01 — THE COMPANY</small>
+        <div>
+          <h3>The company.</h3>
+          <p>Discover the thinking behind Ativartin.</p>
+        </div>
+        <div class="card-bottom">
+          <span>ABOUT ATIVARTIN</span>
+          <span>↗</span>
+        </div>
+      </a>
+
+      <a class="grid-card" href="#/vision">
+        <small>02 — THE FUTURE</small>
+        <div>
+          <h3>Beyond today.</h3>
+          <p>A perspective on what lies ahead.</p>
+        </div>
+        <div class="card-bottom">
+          <span>OUR VISION</span>
+          <span>↗</span>
+        </div>
+      </a>
+
+      <a class="grid-card" href="#/philosophy">
+        <small>03 — THE THINKING</small>
+        <div>
+          <h3>How we think.</h3>
+          <p>The ideas that shape our outlook.</p>
+        </div>
+        <div class="card-bottom">
+          <span>OUR PHILOSOPHY</span>
+          <span>↗</span>
+        </div>
+      </a>
+
+      <a class="grid-card" href="#/principles">
+        <small>04 — THE FOUNDATION</small>
+        <div>
+          <h3>What guides us.</h3>
+          <p>The principles behind our perspective.</p>
+        </div>
+        <div class="card-bottom">
+          <span>OUR PRINCIPLES</span>
+          <span>↗</span>
+        </div>
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="founder">
+
+      <div class="founder-symbol">A.</div>
+
+      <div>
+        <div class="eyebrow">04 / LEADERSHIP</div>
+
+        <h2>Direction shaped by purpose.</h2>
+
+        <p class="body-copy">
+          Ativartin is led by its Founder and
+          Chief Executive Officer, Rakesh D.
+        </p>
+
+        <a class="arrow-link" href="#/rakeshd">
+          MEET THE FOUNDER <b>↗</b>
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="closing">
+
+    <div class="eyebrow">
+      ATIVARTIN / A CONTINUOUS PURSUIT
+    </div>
+
+    <h2>
+      SURPASS<br>
+      <span>BEYOND.</span>
+    </h2>
+
+    <a class="arrow-link" href="#/contact">
+      CONNECT WITH ATIVARTIN <b>↗</b>
+    </a>
+
+  </section>
+
+</div>
+`;
+}
+
+/* OTHER PAGES */
+
+function contentPage(page, path) {
+
+  let extra = "";
+
+  if (page.founder) {
+    extra = `
+      <div class="founder-symbol"
+           style="font-size:clamp(90px,15vw,180px)">
+        R.D.
+      </div>
+      <div class="eyebrow">
+        RAKESH D. / FOUNDER & CEO
+      </div>
+    `;
+  }
+
+  if (page.contact) {
+    extra = `
+      <div class="contact-row">
+        <span>GENERAL ENQUIRIES</span>
+        <span>OFFICIAL DETAILS TO FOLLOW</span>
+      </div>
+    `;
+  }
+
+  if (page.principles) {
+
+    const principles = [
+      [
+        "Clarity over complexity",
+        "Make the essential visible. Choose understanding over unnecessary complication."
+      ],
+      [
+        "Substance over appearance",
+        "Let the quality of thought and action carry more weight than presentation alone."
+      ],
+      [
+        "Progress over complacency",
+        "Stay curious, challenge assumptions and remain willing to evolve."
+      ],
+      [
+        "Responsibility in action",
+        "Pair ambition with thoughtful decisions and awareness of their consequences."
+      ]
+    ];
+
+    extra = `
+      <div class="principles">
+        ${principles.map(item => `
+          <div class="principle">
+            <button type="button" aria-expanded="false">
+              ${item[0]}
+              <span>＋</span>
+            </button>
+            <p>${item[1]}</p>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  return `
+    <div class="page">
+
+      <section class="page-heading">
+
+        <div class="eyebrow">
+          ${page.label}
+        </div>
+
+        <h1>
+          ${page.headline}
+        </h1>
+
+      </section>
+
+      <section class="page-content">
+
+        <div class="eyebrow">
+          ATIVARTIN / ${path.slice(1).toUpperCase()}
+        </div>
+
+        <div>
+
+          <h2>${page.heading}</h2>
+
+          ${page.body.map(text => `
+            <p>${text}</p>
+          `).join("")}
+
+          ${extra}
+
+        </div>
+
+      </section>
+
+    </div>
+  `;
+}
+
+/* ROUTING — ANDROID FRIENDLY */
+
+function getRoute() {
+
+  let route = window.location.hash.substring(1);
+
+  if (!route || route === "/") {
+    return "/";
+  }
+
+  if (!route.startsWith("/")) {
+    route = "/" + route;
+  }
+
+  route = route.replace(/\/+$/, "") || "/";
+
+  return pages[route] ? route : "/404";
+}
+
+/* RENDER */
+
+function renderPage() {
+
+  const route = getRoute();
+  const page = pages[route];
+
+  if (route === "/404") {
+
+    app.innerHTML = `
+      <section class="not-found">
+        <div class="eyebrow">404 / PAGE NOT FOUND</div>
+        <h1>Not this way.</h1>
+        <a class="arrow-link" href="#/">
+          RETURN HOME <b>↗</b>
+        </a>
+      </section>
+    `;
+
+    document.title = "Page not found — ATIVARTIN";
+
+  } else if (page.home) {
+
+    app.innerHTML = homePage();
+    document.title = page.title;
+
+  } else {
+
+    app.innerHTML = contentPage(page, route);
+    document.title = page.title;
+
+  }
+
+  /* Active navigation */
+
+  document.querySelectorAll(".desktop-nav a").forEach(link => {
+
+    if (link.getAttribute("href") === "#" + route) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+
+  });
+
+  closeMenu();
+}
+
+/* MOBILE MENU */
+
+function closeMenu() {
+
+  mobileNav.classList.remove("open");
+
+  menuButton.textContent = "MENU";
+  menuButton.setAttribute("aria-expanded", "false");
+
+}
+
+menuButton.addEventListener("click", function () {
+
+  const open = mobileNav.classList.toggle("open");
+
+  menuButton.textContent = open ? "CLOSE" : "MENU";
+
+  menuButton.setAttribute(
+    "aria-expanded",
+    String(open)
+  );
+
+});
+
+/* PRINCIPLE ACCORDIONS */
+
+document.addEventListener("click", function (event) {
+
+  const button = event.target.closest(".principle button");
+
+  if (!button) return;
+
+  const item = button.closest(".principle");
+  const open = item.classList.toggle("open");
+
+  button.setAttribute("aria-expanded", String(open));
+
+  button.querySelector("span");
+
+});
+
+/* NAVIGATION EVENTS */
+
+window.addEventListener("hashchange", function () {
+
+  renderPage();
+
+  window.scrollTo(0, 0);
+
+});
+
+/* INITIALIZE */
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+renderPage();
+
+})();
+</script>
+
+</body>
+</html>
